@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johnnie Water</title>
+
+  <!-- فونت‌ها -->
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('assets/Inter-Regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Vazirmatn';
+      src: url('assets/Vazirmatn-RD[wght].ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Cairo';
+      src: url('assets/Cairo-Light.ttf') format('truetype');
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/johnnie-water-logo.jpeg" alt="Johnnie Water Logo" class="logo" />
+    <h1 class="title">جاننی واتر</h1>
+    <div class="language-switcher">
+      <button class="lang-btn" data-lang="fa">FA</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ar">AR</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2 class="hero-title">خنک، خالص، افسانه‌ای</h2>
+      <p class="hero-text">آبی که از دل یخچال‌های افسانه‌ای استخراج شده است.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-text">© 2025 Johnnie Water</p>
+    <div class="social-links">
+      <!-- آیکون‌ها بعداً اضافه می‌شن -->
+    </div>
+  </footer>
+
+  <script>
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.documentElement.lang = btn.dataset.lang;
+        // در آینده: تغییر فونت و متن بر اساس زبان
+      });
+    });
+  </script>
+</body>
+</html>
