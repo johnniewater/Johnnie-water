@@ -1,0 +1,66 @@
+
+/* فونت‌ها (در آینده اضافه می‌کنیم) */
+
+/* رنگ‌ها */
+:root {
+  --green-dark: #0F2F2F;
+  --gold-matte: #C8A96A;
+  --white-soft: #F5F5F5;
+  --ice-blue: #AEE3F9;
+  --gray-cool: #D1D5DB;
+}
+
+/* تنظیمات پایه */
+body {
+  margin: 0;
+  padding: 0;
+  background: url('../assets/background.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: sans-serif;
+  color: var(--white-soft);
+}
+
+/* لوگو */
+.logo {
+  width: 180px;
+  margin: 20px;
+}
+
+/* هدر */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(15, 47, 47, 0.8);
+  padding: 10px 30px;
+}
+
+/* سوییچر زبان */
+nav select {
+  font-size: 16px;
+  padding: 6px 12px;
+  background-color: var(--gold-matte);
+  color: var(--green-dark);
+  border: none;
+  border-radius: 4px;
+}
+
+/* بخش اصلی */
+.hero {
+  text-align: center;
+  margin-top: 100px;
+  background-color: rgba(15, 47, 47, 0.6);
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: var(--gold-matte);
+}
+
+.hero p {
+  font-size: 20px;
+  color: var(--ice-blue);
+  margin-top: 10px;
+}
