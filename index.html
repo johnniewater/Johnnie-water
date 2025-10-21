@@ -13,7 +13,7 @@
     }
     @font-face {
       font-family: 'Vazirmatn';
-      src: url('assets/Vazirmatn-RD(wght).ttf') format('truetype');
+      src: url('assets/Vazirmatn-RD[wght].ttf') format('truetype');
     }
     @font-face {
       font-family: 'Cairo';
@@ -29,7 +29,7 @@
     <h1 class="title">جاننی واتر</h1>
     <div class="language-switcher">
       <button class="lang-btn" data-lang="fa">
-        <img src="assets/iran-flag.png" alt="FA" class="flag-icon" />
+        <img src="assets/Iran-flag.png" alt="FA" class="flag-icon" />
       </button>
       <button class="lang-btn" data-lang="en">
         <img src="assets/united-kingdom-flag.png" alt="EN" class="flag-icon" />
@@ -75,8 +75,18 @@
     const langButtons = document.querySelectorAll('.lang-btn');
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        document.documentElement.lang = btn.dataset.lang;
-        // در آینده: تغییر فونت و متن بر اساس زبان
+        const lang = btn.dataset.lang;
+        document.documentElement.lang = lang;
+        if (lang === 'fa') {
+          document.body.style.fontFamily = 'Vazirmatn';
+          document.body.style.direction = 'rtl';
+        } else if (lang === 'en') {
+          document.body.style.fontFamily = 'Inter';
+          document.body.style.direction = 'ltr';
+        } else if (lang === 'ar') {
+          document.body.style.fontFamily = 'Cairo';
+          document.body.style.direction = 'rtl';
+        }
       });
     });
   </script>
