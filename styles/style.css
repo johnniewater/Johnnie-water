@@ -81,3 +81,18 @@ footer {
 .social-links {
   margin-top: 1rem;
 }
+
+.social-links a {
+  margin: 0 0.5rem;
+  display: inline-block;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
