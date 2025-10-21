@@ -38,16 +38,21 @@ header {
 
 .language-switcher {
   margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .lang-btn {
   background-color: transparent;
-  border: 1px solid var(--white-soft);
-  color: var(--white-soft);
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+}
+
+.flag-icon {
+  width: 32px;
+  height: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 .hero {
@@ -76,6 +81,13 @@ footer {
 .footer-text {
   font-size: 0.9rem;
   color: var(--silver);
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: var(--white-soft);
 }
 
 .social-links {
