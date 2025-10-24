@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,45 +16,35 @@
       <a href="shop.html">فروشگاه</a>
       <a href="contact.html">تماس با ما</a>
     </nav>
+
+    <!-- انتخاب زبان -->
+    <select id="langSelect">
+      <option value="ar" selected>عربی</option>
+      <option value="fa">فارسی</option>
+      <option value="en">English</option>
+    </select>
+
+    <!-- انتخاب واحد پول -->
+    <select id="currencySelect">
+      <option value="USD">USD</option>
+      <option value="SAR" selected>SAR</option>
+      <option value="AED">AED</option>
+      <option value="KWD">KWD</option>
+    </select>
   </header>
 
   <section class="shop">
-    <h1>فروشگاه ما</h1>
+    <h1 id="shopTitle">فروشگاه ما</h1>
 
     <!-- سبد خرید -->
     <div class="cart">
-      <h2>سبد خرید شما</h2>
+      <h2 id="cartTitle">سبد خرید شما</h2>
       <div id="cart-items"></div>
-      <div id="cart-total">جمع کل: 0 تومان</div>
+      <div id="cart-total">جمع کل: 0 SAR</div>
     </div>
 
     <!-- محصولات -->
-    <div class="products">
-      <div class="product">
-        <img src="images/product1.jpg" alt="آب معدنی 500ml">
-        <h3>آب معدنی 500ml</h3>
-        <p>قیمت: 5,000 تومان</p>
-        <button class="add-cart">افزودن به سبد خرید</button>
-      </div>
-      <div class="product">
-        <img src="images/product2.jpg" alt="آب معدنی 1.5L">
-        <h3>آب معدنی 1.5L</h3>
-        <p>قیمت: 12,000 تومان</p>
-        <button class="add-cart">افزودن به سبد خرید</button>
-      </div>
-      <div class="product">
-        <img src="images/product1.jpg" alt="آب معدنی 750ml">
-        <h3>آب معدنی 750ml</h3>
-        <p>قیمت: 8,000 تومان</p>
-        <button class="add-cart">افزودن به سبد خرید</button>
-      </div>
-      <div class="product">
-        <img src="images/product2.jpg" alt="آب معدنی 5L">
-        <h3>آب معدنی 5L</h3>
-        <p>قیمت: 40,000 تومان</p>
-        <button class="add-cart">افزودن به سبد خرید</button>
-      </div>
-    </div>
+    <div class="products" id="productsContainer"></div>
   </section>
 
   <footer>
