@@ -1,0 +1,23 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": { "ar": "آب معدنی", "fa": "آب معدنی", "en": "Mineral Water" },
+      "products": [
+        {
+          "id": 1,
+          "name": { "ar": "ماء معدني 500ml", "fa": "آب معدنی 500ml", "en": "Mineral Water 500ml" },
+          "description": {
+            "ar": "توضیحات محصول به عربی",
+            "fa": "توضیحات محصول به فارسی",
+            "en": "Product description in English"
+          },
+          "volume": "500ml",
+          "price": { "USD": 1.3 },
+          "image": "assets/products/product1.jpg",
+          "stock": 100
+        }
+      ]
+    }
+  ]
+}
