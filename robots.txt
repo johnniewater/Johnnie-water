@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: /backend/
 Allow: /
-Sitemap: https://johnniewater.ir/sitemap.xml
+Sitemap: https://yourdomain.com/sitemap.xml
