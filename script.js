@@ -1,55 +1,103 @@
-
-// مدیریت سبد خرید ساده با localStorage
+let products = [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentLang = localStorage.getItem('lang') || 'ar';
+let currentCurrency = localStorage.getItem('currency') || 'SAR';
 
+const productsContainer = document.getElementById('productsContainer');
+const cartItemsDiv = document.getElementById('cart-items');
+const cartTotalDiv = document.getElementById('cart-total');
+
+// بارگذاری محصولات از JSON
+async function loadProducts() {
+  const res = await fetch('products.json');
+  products = await res.json();
+  renderProducts();
+}
+
+// رندر محصولات
+function renderProducts() {
+  productsContainer.innerHTML = '';
+  products.forEach(product => {
+    const price = product.price[currentCurrency];
+    const div = document.createElement('div');
+    div.className = 'product';
+    div.innerHTML = `
+      <img src="${product.image}" alt="${product.name[currentLang]}">
+      <h3>${product.name[currentLang]}</h3>
+      <p>قیمت: ${price} ${currentCurrency}</p>
+      <button class="add-cart" onclick="addToCart(${product.id})">افزودن به سبد خرید</button>
+    `;
+    productsContainer.appendChild(div);
+  });
+}
+
+// مدیریت سبد خرید
 function saveCart() {
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartUI();
 }
 
-function addToCart(productName, price) {
-  const existing = cart.find(item => item.name === productName);
-  if(existing){
-    existing.qty += 1;
-  } else {
-    cart.push({name: productName, price: price, qty:1});
-  }
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if(!product) return;
+  const existing = cart.find(item => item.id === productId);
+  if(existing) existing.qty +=1;
+  else cart.push({id: productId, qty:1});
+  saveCart();
+  alert('محصول به سبد خرید اضافه شد!');
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
   saveCart();
 }
 
-function removeFromCart(productName) {
-  cart = cart.filter(item => item.name !== productName);
-  saveCart();
+// محاسبه تخفیف بر اساس تعداد
+function calculateDiscount(totalQty) {
+  if(totalQty >=50) return 0.2;
+  if(totalQty >=10) return 0.1;
+  return 0;
 }
 
 function updateCartUI() {
-  const cartContainer = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total');
-  if(!cartContainer) return;
-  cartContainer.innerHTML = '';
+  cartItemsDiv.innerHTML = '';
   let total = 0;
+  let totalQty = 0;
+
   cart.forEach(item => {
-    total += item.price * item.qty;
+    const product = products.find(p => p.id === item.id);
+    const price = product.price[currentCurrency];
+    total += price * item.qty;
+    totalQty += item.qty;
+
     const div = document.createElement('div');
-    div.innerHTML = `${item.name} x ${item.qty} = ${item.price*item.qty} تومان
-                     <button onclick="removeFromCart('${item.name}')">حذف</button>`;
-    cartContainer.appendChild(div);
+    div.innerHTML = `${product.name[currentLang]} x ${item.qty} = ${price*item.qty} ${currentCurrency} 
+                     <button onclick="removeFromCart(${item.id})">حذف</button>`;
+    cartItemsDiv.appendChild(div);
   });
-  cartTotal.innerText = `جمع کل: ${total} تومان`;
+
+  const discount = calculateDiscount(totalQty);
+  const discountedTotal = total * (1 - discount);
+
+  cartTotalDiv.innerText = `جمع کل: ${discountedTotal.toFixed(2)} ${currentCurrency} ${discount>0 ? `(تخفیف ${discount*100}%)` : ''}`;
 }
 
-// اضافه کردن دکمه‌ها
-document.addEventListener('DOMContentLoaded', ()=>{
-  const addBtns = document.querySelectorAll('.add-cart');
-  addBtns.forEach((btn)=>{
-    btn.addEventListener('click', ()=>{
-      const product = btn.parentElement;
-      const name = product.querySelector('h3').innerText;
-      const priceText = product.querySelector('p').innerText;
-      const price = parseInt(priceText.replace(/[^0-9]/g,''));
-      addToCart(name, price);
-      alert('محصول به سبد خرید اضافه شد!');
-    });
-  });
+// تغییر زبان
+document.getElementById('langSelect').addEventListener('change', e=>{
+  currentLang = e.target.value;
+  localStorage.setItem('lang', currentLang);
+  renderProducts();
   updateCartUI();
 });
+
+// تغییر واحد پول
+document.getElementById('currencySelect').addEventListener('change', e=>{
+  currentCurrency = e.target.value;
+  localStorage.setItem('currency', currentCurrency);
+  renderProducts();
+  updateCartUI();
+});
+
+// شروع
+loadProducts();
+updateCartUI();
