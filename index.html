@@ -1,342 +1,53 @@
-<!doctype html>
-
-<!--
-  Johnnie-water: Single-file professional static website
-  - Place this file as `index.html` in the root of your GitHub repo `Johnnie-water`.
-  - Create an `assets/` folder and put your provided asset files there (see README section below).
-  - Designed to be responsive, accessible, performant, and SEO-friendly.
-  - Fonts are referenced locally (you included TTF/WOFF2 files). Adjust names if needed.
-
-  Files you provided (expected paths):
-  assets/johnnie-water-logo.jpeg
-  assets/Golden-drop.jpeg
-  assets/Johnnie-water-background.jpeg   <-- rename your "عکس پس زمینه" to this filename
-  assets/Cairo-Light.ttf
-  assets/Inter-Regular.woff2
-  assets/Vazirmatn-RD[wght].ttf
-  assets/Iran-flag.png
-  assets/saudi-flag.png
-  assets/united-kingdom-flag.png
-  assets/instagram.png
-  assets/linkedin.png
-  assets/telegram.png
-  assets/twitter.png
-  assets/whatsapp.png
-  assets/golden-drop-icon.png  <-- rename Golden-drop.jpeg or convert to PNG
-
-  Deploy: push to GitHub and enable GitHub Pages from the repo settings (branch: main / root).
---><html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="آب معدنی Johnnie Water — طبیعی، پاک و با بسته‌بندی لوکس. خرید آنلاین و تماس مستقیم.">
-  <meta name="keywords" content="آب معدنی, Johnnie Water, آب آشامیدنی, bottled water, آب طبیعی">
-  <meta name="author" content="Johnnie Water">
-  <title>Johnnie Water — آب معدنی طبیعی</title>  <!-- Open Graph -->  <meta property="og:title" content="Johnnie Water">
-  <meta property="og:description" content="آب معدنی طبیعی، پاک و با بسته‌بندی لوکس — Johnnie Water">
-  <meta property="og:image" content="assets/Golden-drop.jpeg">
-  <meta property="og:type" content="website">  <!-- Favicon (optional) -->  <link rel="icon" href="assets/johnnie-water-logo.jpeg">  <!-- Local fonts -->  <style>
-    @font-face { font-family: 'CairoLightLocal'; src: url('assets/Cairo-Light.ttf') format('truetype'); font-display: swap; }
-    @font-face { font-family: 'InterLocal'; src: url('assets/Inter-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-    @font-face { font-family: 'VazirmatnRD'; src: url('assets/Vazirmatn-RD[wght].ttf') format('truetype'); font-display: swap; }
-
-    :root{
-      --accent: #c59a2c; /* gold */
-      --dark: #0b1220;
-      --muted: #7b8894;
-      --glass: rgba(255,255,255,0.06);
-      --maxwidth: 1100px;
-    }
-
-    /* Reset-ish */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family: VazirmatnRD, CairoLightLocal, InterLocal, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:#f7fbff; color:var(--dark); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      -webkit-text-size-adjust:100%;
-    }
-
-    /* Layout */
-    .container{max-width:var(--maxwidth); margin:0 auto; padding:28px}
-
-    header{display:flex; align-items:center; justify-content:space-between; gap:12px; background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)); padding:14px 20px; border-radius:14px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{width:64px; height:64px; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(11,18,32,0.08)}
-    .logo img{width:100%; height:100%; object-fit:cover}
-    .brand h1{margin:0; font-size:20px; line-height:1;}
-    .brand p{margin:0; color:var(--muted); font-size:13px}
-
-    nav{display:flex; gap:12px; align-items:center}
-    .lang-switch{display:flex; gap:6px; align-items:center}
-    .flag{width:28px; height:20px; object-fit:cover; border-radius:4px; cursor:pointer; border:2px solid transparent}
-    .flag[aria-current="true"]{border-color:var(--accent)}
-
-    /* Hero */
-    .hero{display:grid; grid-template-columns:1fr; gap:24px; align-items:center; margin:28px 0}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7)); border-radius:18px; padding:28px; box-shadow:0 10px 30px rgba(11,18,32,0.06); display:flex; gap:20px; align-items:center}
-    .hero-left{flex:1}
-    .hero-title{font-size:28px; margin:0 0 8px}
-    .hero-sub{color:var(--muted); margin:0 0 18px}
-    .cta-row{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{padding:10px 16px; border-radius:12px; font-weight:600; border:0; cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,var(--accent), #f0c65a); color:#08202a; box-shadow:0 8px 20px rgba(197,154,44,0.18)}
-    .btn-outline{background:transparent; border:1px solid rgba(11,18,32,0.08); color:var(--dark)}
-
-    .hero-media{width:220px; height:220px; display:flex; align-items:center; justify-content:center}
-    .bottle{width:100%; height:100%; border-radius:18px; overflow:hidden; box-shadow:0 18px 40px rgba(11,18,32,0.12)}
-    .bottle img{width:100%; height:100%; object-fit:cover}
-
-    /* Features */
-    .features{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:22px 0}
-    .feature{background:var(--glass); padding:18px; border-radius:12px; text-align:center}
-    .feature h3{margin:6px 0 0}
-    .feature p{color:var(--muted); font-size:14px}
-
-    /* CTA full width */
-    .cta-full{display:flex; gap:18px; align-items:center; justify-content:space-between; background:linear-gradient(90deg, rgba(197,154,44,0.08), rgba(197,154,44,0.02)); padding:18px; border-radius:12px}
-
-    /* Footer */
-    footer{margin-top:28px; padding:18px; border-radius:12px; display:flex; gap:12px; align-items:center; justify-content:space-between; background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4))}
-    .socials{display:flex; gap:10px}
-    .socials img{width:28px; height:28px}
-
-    /* Responsive */
-    @media (max-width:900px){
-      .features{grid-template-columns:repeat(2,1fr)}
-      .hero{grid-template-columns:1fr}
-      .hero-media{width:180px; height:180px}
-    }
-    @media (max-width:560px){
-      body{padding:14px}
-      .features{grid-template-columns:1fr}
-      header{flex-direction:column; align-items:flex-start}
-      .cta-full{flex-direction:column; align-items:flex-start}
-    }
-
-    /* small utilities */
-    .muted{color:var(--muted)}
-    .sr-only{position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden}
-  </style></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Johnnie Water - آب معدنی</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
-  <div class="container">
-    <header role="banner" aria-label="Johnnie Water header">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <img src="assets/johnnie-water-logo.jpeg" alt="Johnnie Water logo">
-        </div>
-        <div>
-          <h1>Johnnie Water</h1>
-          <p class="muted">آب معدنی طبیعی — بسته‌بندی لوکس</p>
-        </div>
-      </div><nav aria-label="Main navigation">
-    <div class="lang-switch" role="navigation" aria-label="Language switch">
-      <img src="assets/Iran-flag.png" alt="فارسی" class="flag" role="button" data-lang="fa" aria-current="true">
-      <img src="assets/saudi-flag.png" alt="عربی" class="flag" role="button" data-lang="ar">
-      <img src="assets/united-kingdom-flag.png" alt="English" class="flag" role="button" data-lang="en">
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Johnnie Water">
     </div>
-  </nav>
-</header>
+    <nav>
+      <a href="index.html">خانه</a>
+      <a href="shop.html">فروشگاه</a>
+      <a href="contact.html">تماس با ما</a>
+    </nav>
+  </header>
 
-<main>
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-card">
-      <div class="hero-left">
-        <h2 id="hero-heading" class="hero-title">آب طبیعی و تصفیه‌شده — Johnnie</h2>
-        <p class="hero-sub">از چشمه‌های طبیعی گرفته شده و با استانداردهای جهانی بسته‌بندی شده است. مناسب ورزش، مهمانی و استفاده روزمره.</p>
+  <section class="hero">
+    <h1>آب معدنی خالص و تازه</h1>
+    <p>طعم ناب طبیعت در هر قطره</p>
+    <a href="shop.html" class="btn">خرید کنید</a>
+  </section>
 
-        <div class="cta-row">
-          <button class="btn btn-primary" id="buy-now">خرید آنلاین</button>
-          <button class="btn btn-outline" id="learn-more">اطلاعات بیشتر</button>
-        </div>
-
-        <div style="margin-top:14px; color:var(--muted); font-size:13px">تلفن سفارش: <a href="tel:+98-21-000000" style="color:inherit; text-decoration:underline">+98 21 000000</a></div>
-      </div>
-
-      <div class="hero-media">
-        <div class="bottle" role="img" aria-label="Johnnie Water bottle">
-          <img src="assets/Golden-drop.jpeg" alt="Johnnie Water bottle image">
-        </div>
-      </div>
+  <section class="features">
+    <div class="feature">
+      <h2>100% طبیعی</h2>
+      <p>تأمین شده از منابع طبیعی.</p>
     </div>
-
-    <!-- Features -->
-    <div class="features" aria-hidden="false">
-      <div class="feature">
-        <strong>منبع طبیعی</strong>
-        <p>چشمه‌های محافظت‌شده و مستند</p>
-      </div>
-      <div class="feature">
-        <strong>تضمین کیفیت</strong>
-        <p>تست‌های میکروبی و شیمیایی دوره‌ای</p>
-      </div>
-      <div class="feature">
-        <strong>بسته‌بندی لوکس</strong>
-        <p>طراحی شیک و مصرف آسان</p>
-      </div>
+    <div class="feature">
+      <h2>سلامت تضمین شده</h2>
+      <p>کاملاً استاندارد و آزمایش شده.</p>
     </div>
-
-    <!-- CTA Full Width -->
-    <div class="cta-full">
-      <div>
-        <h3 style="margin:0">آماده تأمین آب مکان شما هستیم؟</h3>
-        <p class="muted" style="margin:6px 0 0">فروش سازمانی و سفارش‌های عمده با قیمت ویژه</p>
-      </div>
-      <div style="display:flex; gap:8px; align-items:center">
-        <a href="#contact" class="btn btn-primary">درخواست قیمت</a>
-        <a href="#" class="btn btn-outline" id="download-spec">مشخصات فنی</a>
-      </div>
+    <div class="feature">
+      <h2>ارسال سریع</h2>
+      <p>در کمترین زمان به درب منزل شما.</p>
     </div>
   </section>
 
-  <!-- About / Story -->
-  <section aria-labelledby="about-heading" style="margin-top:22px; display:grid; grid-template-columns:1fr 320px; gap:18px; align-items:start">
-    <div>
-      <h2 id="about-heading">داستان Johnnie Water</h2>
-      <p class="muted">Johnnie Water با تمرکز روی خلوص، پایداری و طراحی به بازار عرضه می‌شود. ما منابع را با احترام مدیریت کرده و بسته‌بندی را تا حد ممکن سازگار با محیط زیست طراحی می‌کنیم.</p>
-
-      <ul style="margin-top:12px">
-        <li>فیلترهای چندمرحله‌ای و تست‌های مستقل</li>
-        <li>بسته‌بندی بازیافت‌پذیر</li>
-        <li>تحویل سریع و پشتیبانی مشتری ۲۴/۷</li>
-      </ul>
-    </div>
-
-    <aside style="background:var(--glass); padding:16px; border-radius:12px">
-      <h4 style="margin:0 0 8px">محصولات محبوب</h4>
-      <div style="display:flex; gap:10px; align-items:center">
-        <img src="assets/Golden-drop.jpeg" alt="bottle" style="width:64px; height:64px; object-fit:cover; border-radius:8px">
-        <div>
-          <div style="font-weight:700">Johnnie Classic 500ml</div>
-          <div class="muted" style="font-size:13px">بسته 6 عددی</div>
-        </div>
-      </div>
-    </aside>
+  <section class="about">
+    <h2>درباره ما</h2>
+    <p>Johnnie Water با هدف ارائه آب معدنی سالم و خالص از منابع طبیعی تأسیس شده است. ما کیفیت و سلامت را در اولویت قرار داده‌ایم.</p>
   </section>
 
-  <!-- Contact / Form -->
-  <section id="contact" aria-labelledby="contact-heading" style="margin-top:22px; background:#fff; padding:18px; border-radius:12px">
-    <h2 id="contact-heading">تماس و سفارش</h2>
-    <p class="muted">فرم زیر را پر کنید یا از طریق شبکه‌های اجتماعی به ما پیام دهید.</p>
+  <footer>
+    <p>&copy; 2025 Johnnie Water</p>
+  </footer>
 
-    <form id="contact-form" style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px" onsubmit="return handleForm(event)">
-      <label class="sr-only" for="name">نام</label>
-      <input id="name" name="name" placeholder="نام شما" required style="padding:12px; border-radius:8px; border:1px solid rgba(11,18,32,0.06)">
-
-      <label class="sr-only" for="phone">تلفن</label>
-      <input id="phone" name="phone" placeholder="شماره تلفن" required style="padding:12px; border-radius:8px; border:1px solid rgba(11,18,32,0.06)">
-
-      <label class="sr-only" for="email">ایمیل</label>
-      <input id="email" name="email" placeholder="ایمیل" type="email" style="padding:12px; border-radius:8px; border:1px solid rgba(11,18,32,0.06)">
-
-      <label class="sr-only" for="quantity">تعداد/پیام</label>
-      <input id="quantity" name="quantity" placeholder="تعداد یا پیام" style="padding:12px; border-radius:8px; border:1px solid rgba(11,18,32,0.06)">
-
-      <div style="grid-column:1/-1; display:flex; gap:10px; align-items:center; justify-content:space-between">
-        <button class="btn btn-primary" type="submit">ارسال</button>
-        <div class="muted">ما پاسخ می‌دهیم در کم‌تر از 24 ساعت کاری</div>
-      </div>
-    </form>
-  </section>
-
-</main>
-
-<footer role="contentinfo">
-  <div style="display:flex; gap:12px; align-items:center">
-    <img src="assets/johnnie-water-logo.jpeg" alt="logo" style="width:48px; height:48px; border-radius:8px">
-    <div>
-      <div style="font-weight:700">Johnnie Water</div>
-      <div class="muted" style="font-size:13px">© 2025 Johnnie Water — همه حقوق محفوظ است</div>
-    </div>
-  </div>
-
-  <div style="display:flex; gap:12px; align-items:center">
-    <div class="socials" aria-label="social links">
-      <a href="#" aria-label="Instagram"><img src="assets/instagram.png" alt="instagram"></a>
-      <a href="#" aria-label="LinkedIn"><img src="assets/linkedin.png" alt="linkedin"></a>
-      <a href="#" aria-label="Telegram"><img src="assets/telegram.png" alt="telegram"></a>
-      <a href="#" aria-label="Twitter"><img src="assets/twitter.png" alt="twitter"></a>
-      <a href="#" aria-label="WhatsApp"><img src="assets/whatsapp.png" alt="whatsapp"></a>
-    </div>
-  </div>
-</footer>
-
-<!-- Microdata / JSON-LD for SEO -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"Johnnie Water",
-  "url":"https://johnniewater.ir",
-  "logo":"https://johnniewater.ir/assets/johnnie-water-logo.jpeg",
-  "sameAs":["https://instagram.com/","https://linkedin.com/","https://telegram.org/"]
-}
-</script>
-
-<!-- Minimal JS: language toggle, form handler -->
-<script>
-  // Language switch - only UI. For full multilingual, create separate localized pages or use i18n.
-  (function(){
-    const flags = document.querySelectorAll('.flag');
-    flags.forEach(f=>f.addEventListener('click', ()=>{
-      flags.forEach(x=>x.setAttribute('aria-current','false'));
-      f.setAttribute('aria-current','true');
-      const lang = f.dataset.lang;
-      if(lang==='en'){
-        // switch to LTR english
-        document.documentElement.lang='en'; document.documentElement.dir='ltr';
-        document.body.style.direction='ltr';
-        // Minimal content transform (for demo)
-        document.querySelector('.hero-title').textContent = 'Natural Mineral Water — Johnnie';
-        document.querySelector('.hero-sub').textContent = 'Sourced from protected springs and bottled with global standards.';
-        document.getElementById('buy-now').textContent='Buy online';
-        document.getElementById('learn-more').textContent='Learn more';
-      } else if(lang==='ar'){
-        document.documentElement.lang='ar'; document.documentElement.dir='rtl'; document.body.style.direction='rtl';
-        document.querySelector('.hero-title').textContent = 'مياه طبيعية — جونّي';
-        document.querySelector('.hero-sub').textContent = 'مأخوذة من ينابيع محمية ومعبأة بمعايير عالمية.';
-        document.getElementById('buy-now').textContent='شراء';
-        document.getElementById('learn-more').textContent='المزيد';
-      } else {
-        document.documentElement.lang='fa'; document.documentElement.dir='rtl'; document.body.style.direction='rtl';
-        document.querySelector('.hero-title').textContent = 'آب طبیعی و تصفیه‌شده — Johnnie';
-        document.querySelector('.hero-sub').textContent = 'از چشمه‌های طبیعی گرفته شده و با استانداردهای جهانی بسته‌بندی شده است.';
-        document.getElementById('buy-now').textContent='خرید آنلاین';
-        document.getElementById('learn-more').textContent='اطلاعات بیشتر';
-      }
-    }))
-  })();
-
-  // Simple form handler — progressive enhancement: will fallback to actionless form if JS disabled
-  function handleForm(e){
-    e.preventDefault();
-    const data = {
-      name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value,
-      email: document.getElementById('email').value,
-      quantity: document.getElementById('quantity').value
-    };
-    // Basic validation
-    if(!data.name || !data.phone){ alert('لطفا نام و تلفن را وارد کنید'); return false }
-
-    // Replace this with real backend endpoint or formspree / netlify forms / gh-pages + static form handler
-    console.log('contact form submitted', data);
-    alert('پیام شما دریافت شد — ما در کوتاه‌ترین زمان پاسخ می‌دهیم');
-    e.target.reset();
-    return false;
-  }
-
-  // Download spec simulation
-  document.getElementById('download-spec').addEventListener('click', function(ev){ ev.preventDefault(); alert('در حال آماده‌سازی فایل مشخصات (نسخه نمونه). برای دریافت نسخه PDF، آن را از مخزن GitHub دانلود کنید.'); });
-</script>
-
-<!-- Performance and SEO notes (hidden, for devs) -->
-<script class="sr-only">/*
-  - To optimize: export images as WebP, provide srcset for responsive sizes, lazy-load large images.
-  - Add real contact backend: Formspree, Netlify Forms, or a small serverless function (AWS Lambda / Cloudflare Workers).
-  - Add analytics (privacy aware) and CDN for assets.
-  - For multilingual: create /en/index.html and /ar/index.html or use a simple JS i18n library.
-*/</script>
-
-  </div>
+  <script src="js/main.js"></script>
 </body>
 </html>
