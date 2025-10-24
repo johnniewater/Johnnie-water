@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": { "ar": "ماء معدني 500ml", "fa": "آب معدنی 500ml", "en": "Mineral Water 500ml" },
+    "price": { "USD": 1.3, "SAR": 4.9, "AED": 4.8, "KWD": 0.4 },
+    "image": "images/product1.jpg"
+  },
+  {
+    "id": 2,
+    "name": { "ar": "ماء معدني 1.5L", "fa": "آب معدنی 1.5L", "en": "Mineral Water 1.5L" },
+    "price": { "USD": 3.0, "SAR": 11.3, "AED": 11.0, "KWD": 1.0 },
+    "image": "images/product2.jpg"
+  },
+  {
+    "id": 3,
+    "name": { "ar": "ماء معدني 750ml", "fa": "آب معدنی 750ml", "en": "Mineral Water 750ml" },
+    "price": { "USD": 2.0, "SAR": 7.5, "AED": 7.2, "KWD": 0.6 },
+    "image": "images/product1.jpg"
+  },
+  {
+    "id": 4,
+    "name": { "ar": "ماء معدني 5L", "fa": "آب معدنی 5L", "en": "Mineral Water 5L" },
+    "price": { "USD": 10.0, "SAR": 37.5, "AED": 36.8, "KWD": 3.4 },
+    "image": "images/product2.jpg"
+  }
+]
